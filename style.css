@@ -113,6 +113,7 @@ header {
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .show-filters {
