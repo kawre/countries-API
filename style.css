@@ -93,7 +93,6 @@ header {
   color: var(--light-input);
   padding: 5px;
   margin: 0 20px 0 25px;
-  cursor: pointer;
 }
 
 /* filter */
@@ -171,10 +170,17 @@ header {
 
 .country-img {
   width: 100%;
+  height: 11.55vw;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
 }
 
 .country img {
+  object-fit: cover;
   width: 100%;
+  height: 100%;
   display: block;
 }
 
@@ -199,4 +205,19 @@ header {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+/* preloader */
+
+.preloader {
+  position: absolute;
+  left: 50%;
+  margin-left: -32px;
+  margin-top: 200px;
+}
+
+/* hide */
+
+.hide {
+  display: none;
 }
