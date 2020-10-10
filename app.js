@@ -44,3 +44,9 @@ function getCountries() {
 }
 
 getCountries();
+
+// Dark Mode
+
+document.querySelector(".dark-mode").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});

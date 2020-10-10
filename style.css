@@ -5,8 +5,22 @@
 }
 
 body {
-  background: hsl(0, 0%, 98%);
+  /* light mode */
+  --background: hsl(0, 0%, 98%);
+  --text: hsl(200, 15%, 8%);
+  --input: hsl(0, 0%, 52%);
+  --elements: hsl(0, 0%, 100%);
+
+  background: var(--background);
   font-size: 14px;
+}
+
+body.dark {
+  /* dark mode */
+  --background: hsl(207, 26%, 17%);
+  --text: hsl(0, 0%, 100%);
+  --input: hsl(0, 0%, 100%);
+  --elements: hsl(209, 23%, 22%);
 }
 
 button,
@@ -14,23 +28,10 @@ body {
   font-family: "Nunito Sans", sans-serif;
 }
 
-/* colors */
-:root {
-  /* light mode */
-  --light-backgroud: hsl(0, 0%, 98%);
-  --light-text: hsl(200, 15%, 8%);
-  --light-input: hsl(0, 0%, 52%);
-  --light-elements: hsl(0, 0%, 100%);
-  /* dark mode */
-  --dark-background: hsl(207, 26%, 17%);
-  --dark-text: hsl(0, 0%, 100%);
-  --dark-elements: hsl(209, 23%, 22%);
-}
-
 /* header */
 
 header {
-  background: var(--light-elements);
+  background: var(--elements);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   width: 100%;
   padding: 23px 6%;
@@ -41,7 +42,7 @@ header {
 
 .header-left h1 {
   font-size: 25px;
-  color: var(--light-text);
+  color: var(--text);
 }
 
 .dark-mode {
@@ -55,6 +56,19 @@ header {
   cursor: pointer;
   padding: 6px;
   margin-right: -6px;
+  color: var(--text);
+}
+
+body .fas.fa-moon {
+  display: none;
+}
+
+body.dark .fas.fa-moon {
+  display: block;
+}
+
+body.dark .far.fa-moon {
+  display: none;
 }
 
 /* search */
@@ -72,7 +86,7 @@ header {
   align-items: center;
   width: 480px;
   height: 55px;
-  background: var(--light-elements);
+  background: var(--elements);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
@@ -84,18 +98,18 @@ header {
   height: 100%;
   font-size: 14px;
   font-weight: 500;
-  color: var(--light-text);
+  color: var(--text);
 }
 
 .search-bar input::placeholder {
-  color: var(--light-input);
+  color: var(--input);
 }
 
 .search-btn {
   border: none;
   background: none;
   font-size: 18px;
-  color: var(--light-input);
+  color: var(--input);
   padding: 5px;
   margin: 0 20px 0 25px;
 }
@@ -110,7 +124,8 @@ header {
   height: 55px;
   width: 195px;
   padding: 0 20px;
-  background: white;
+  background: var(--elements);
+  color: var(--text);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   display: flex;
@@ -129,13 +144,14 @@ header {
   font-size: 12px;
   padding: 6px;
   margin-right: -6px;
+  color: var(--text);
 }
 
 .filters {
   position: absolute;
   margin-top: 5px;
   width: 100%;
-  background: var(--light-elements);
+  background: var(--elements);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   flex-direction: column;
   font-weight: 600;
@@ -167,7 +183,7 @@ header {
 .country {
   width: 100%;
   overflow: hidden;
-  background: white;
+  background: var(--elements);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   cursor: pointer;
@@ -194,10 +210,12 @@ header {
 .country-about h2 {
   font-size: 20px;
   padding-bottom: 12px;
+  color: var(--text);
 }
 
 .country-about p {
   font-weight: 600;
+  color: var(--text);
 }
 
 .country-about span {
