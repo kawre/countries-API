@@ -1,32 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+        <link rel="icon" href="48359793_273899206651777_3050193199894102016_n.png">
     <script defer src="app.js"></script>
-    <title>Document</title>
+    <title>Countries API</title>
+    
 </head>
+
 <body>
     <header>
         <div class="header-left">
             <h1>Where is the world?</h1>
         </div>
         <div class="header-right">
-            <button>Dark Mode</button>
+            <button class="dark-mode">
+                <i class="far fa-moon"></i>
+                Dark Mode
+            </button>
         </div>
     </header>
     <main>
         <section class="search">
-            <div class="search-bar"></div>
-            <div class="filter"></div>
+            <div class="search-bar">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Search for a country...">
+            </div>
+            <div class="filter-container">
+                <div class="filter-current">
+                    <p class="filter-selected">Filter by Region</p>
+                    <button class="show-filters"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <ul class="filters">
+                    <button>
+                        <li>Africa</li>
+                    </button>
+                </ul>
+            </div>
         </section>
-        <section class="countires">
+        <section class="countries">
             <article class="country">
-                <div class="country-img"></div>
-                <div class="country-about"></div>
+                <div class="country-img">
+                    <img src="https://restcountries.eu/data/afg.svg" alt="">
+                </div>
+                <div class="country-about">
+                    <h2>Germany</h2>
+                    <div class="country-details">
+                        <p>Population: <span></span></p>
+                        <p>Region: <span></span></p>
+                        <p>Capital: <span></span></p>
+                    </div>
+                </div>
             </article>
         </section>
     </main>
 </body>
+
 </html>
