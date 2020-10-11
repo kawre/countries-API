@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  transition: background 0.25s ease;
 }
 
 body {
@@ -41,7 +42,7 @@ header {
 }
 
 .header-left h1 {
-  font-size: 25px;
+  font-size: 24px;
   color: var(--text);
 }
 
@@ -241,6 +242,10 @@ body.dark .far.fa-moon {
 
 .hide {
   display: none;
+}
+
+.show {
+  display: block;
 }
 
 @media (max-width: 1200px) {

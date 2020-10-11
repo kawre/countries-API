@@ -30,7 +30,7 @@ function getCountries() {
             <img src="${country.flag}" alt="${country.name}">
             </div>
             <div class="country-about">
-            <h2>${country.name}</h2>
+            <h2 class="country-name">${country.name}</h2>
             <div class="country-details">
             <p>Population: <span>${country.population}</span></p>
             <p>Region: <span>${country.region}</span></p>
@@ -40,9 +40,24 @@ function getCountries() {
             </article>`;
         document.querySelector(".countries").innerHTML = countriesData;
       });
+
+      const input = document.querySelector(".search-input");
+
+      input.addEventListener("input", (e) => {
+        const { value } = e.target;
+
+        const countryName = document.querySelectorAll(".country-name");
+
+        countryName.forEach((name) => {
+          if (name.innerText.toLowerCase().includes(value.toLowerCase())) {
+            name.parentElement.parentElement.classList.remove("hide");
+          } else {
+            name.parentElement.parentElement.classList.add("hide");
+          }
+        });
+      });
     });
 }
-
 getCountries();
 
 // Dark Mode
@@ -50,3 +65,5 @@ getCountries();
 document.querySelector(".dark-mode").addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
+
+// search
