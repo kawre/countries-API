@@ -17,6 +17,7 @@ body {
 
   background: var(--background);
   font-size: 14px;
+  padding-top: 80px;
 }
 
 body.dark {
@@ -42,6 +43,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  z-index: 999;
+  top: 0;
 }
 
 .header-left h1 {
@@ -123,6 +127,7 @@ body.dark .far.fa-moon {
 
 .filter-container {
   position: relative;
+  z-index: 10;
 }
 
 .filter-current {
@@ -155,7 +160,7 @@ body.dark .far.fa-moon {
 .filters {
   position: absolute;
   margin-top: 5px;
-  width: 100%;
+  width: 195px;
   background: var(--elements);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   flex-direction: column;
@@ -197,6 +202,13 @@ body.dark .far.fa-moon {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.country:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.125);
 }
 
 .country-img {
@@ -271,6 +283,66 @@ body.dark .gif-dark {
 
 body.dark .gif-light {
   display: none;
+}
+
+/* overlay */
+
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: var(--background);
+  z-index: 998;
+  padding: 80px 6% 0 6%;
+  top: 0;
+}
+
+.overlay-container {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  margin-top: 80px;
+}
+
+.overlay-country {
+  display: flex;
+}
+
+.overlay-details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 150px;
+  justify-content: center;
+  color: var(--text);
+}
+
+.back-btn {
+  border: none;
+  background: var(--elements);
+  color: var(--text);
+  height: 40px;
+  padding: 0 45px;
+  border-radius: 4px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 16px;
+}
+
+.back-btn:hover {
+  transform: scale(1.04);
+}
+
+.back-btn svg {
+  height: 16px;
+}
+
+path {
+  fill: var(--text) !important;
 }
 
 /* hide */

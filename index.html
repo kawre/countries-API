@@ -14,12 +14,9 @@
       integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
       crossorigin="anonymous"
     />
-    <link
-      rel="icon"
-      href="48359793_273899206651777_3050193199894102016_n.png"
-    />
+    <link rel="icon" href="/gifs/8-2-earth-picture_32x32.ico" />
     <script defer src="app.js"></script>
-    <title>Countries API</title>
+    <title>Where is the world?</title>
   </head>
 
   <body>
@@ -65,6 +62,70 @@
         <div class="preloader">
           <img class="gif-light" src="/gifs/dark.gif" alt="Loading" />
           <img class="gif-dark" src="/gifs/light.gif" alt="Loading" />
+        </div>
+      </section>
+      <section class="overlay">
+        <div class="overlay-container">
+          <div class="back">
+            <button class="back-btn">
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 31.494 31.494"
+                style="enable-background: new 0 0 31.494 31.494"
+                xml:space="preserve"
+              >
+                <path
+                  style="fill: #1e201d"
+                  d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554
+	c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587
+	c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"
+                />
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+
+              <span class="back-text">Back</span>
+            </button>
+          </div>
+          <div class="overlay-country">
+            <div class="overlay-img">
+              <img src="https://restcountries.eu/data/bel.svg" alt="" />
+            </div>
+            <div class="overlay-details">
+              <strong>Belgium</strong>
+              <ul class="overlay-country-details">
+                <li>Native Name: <span></span></li>
+                <li>Population: <span class="population"></span></li>
+                <li>Region: <span></span></li>
+                <li>Sub Region: <span></span></li>
+                <li>Capital <span></span></li>
+                <li>Top Level Domain: <span></span></li>
+                <li>Currencies: <span></span></li>
+                <li>Languages: <span></span></li>
+              </ul>
+              <div class="overlay-border">
+                <p>Border Countries:</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

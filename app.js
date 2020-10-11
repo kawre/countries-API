@@ -15,8 +15,9 @@ async function getCountries() {
   const res = await fetch("https://restcountries.eu/rest/v2/all");
   const countries = await res.json();
 
-  displayCountries(countries);
-  searchCountries();
+  //displayCountries(countries);
+  //searchCountries();
+  showDetails();
 }
 
 // displayCountries
@@ -46,11 +47,10 @@ function displayCountries(countries) {
 function searchCountries() {
   input.addEventListener("input", (e) => {
     const { value } = e.target;
-    const countryName = document.querySelectorAll(".country-name");
     filterSelected.innerHTML = "Filter by Region";
+    const countryName = document.querySelectorAll(".country-name");
 
     countryName.forEach((name) => {
-      console.log(name.innerHTML);
       if (name.innerText.toLowerCase().includes(value.toLowerCase())) {
         name.parentElement.parentElement.classList.remove("hide");
       } else {
@@ -121,3 +121,21 @@ darkModeBtn.addEventListener("click", () => {
     console.log(darkMode);
   }
 });
+
+// show country details
+
+function showDetails() {
+  const countryAll = document.querySelectorAll(".country");
+
+  countryAll.forEach((country) => {
+    country.addEventListener("click", (e) => {
+      const name = e.currentTarget.children[1].children[0].innerText;
+      singleCountry(name);
+    });
+  });
+  async function singleCountry(name) {
+    const res = await fetch(`https://restcountries.eu/rest/v2/name/${name}`);
+    const country = await res.json();
+    console.log(JSON.stringify(country));
+  }
+}
