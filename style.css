@@ -5,6 +5,10 @@
   transition: background 0.25s ease;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   /* light mode */
   --background: hsl(0, 0%, 98%);
@@ -99,11 +103,12 @@ body.dark .far.fa-moon {
   height: 100%;
   font-size: 14px;
   font-weight: 500;
+  padding-left: 20px;
   color: var(--text);
 }
 
 .search-bar input::placeholder {
-  color: var(--input);
+  color: hsl(0, 0%, 52%);
 }
 
 .search-btn {
@@ -112,7 +117,7 @@ body.dark .far.fa-moon {
   font-size: 18px;
   color: var(--input);
   padding: 5px;
-  margin: 0 20px 0 25px;
+  margin-left: 25px;
 }
 
 /* filter */
@@ -158,11 +163,16 @@ body.dark .far.fa-moon {
   font-weight: 600;
   gap: 5px;
   list-style: none;
-  padding: 14px 20px;
+  padding: 16px 20px;
   border-radius: 4px;
   display: flex;
   opacity: 0;
   visibility: hidden;
+}
+
+.filter {
+  cursor: pointer;
+  color: var(--text);
 }
 
 .active {
@@ -174,7 +184,7 @@ body.dark .far.fa-moon {
 
 .countries {
   width: 100%;
-  padding: 0 6%;
+  padding: 0 6% 6%;
   display: grid;
   grid-template-columns: 21% 21% 21% 21%;
   justify-content: space-between;
@@ -233,19 +243,20 @@ body.dark .far.fa-moon {
 
 .preloader {
   position: absolute;
-  left: 50%;
-  margin-left: -32px;
-  margin-top: 200px;
+  margin-top: 150px;
+  width: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26px;
+  gap: 20px;
 }
 
 /* hide */
 
 .hide {
   display: none;
-}
-
-.show {
-  display: block;
 }
 
 @media (max-width: 1200px) {

@@ -1,69 +1,95 @@
+// elements
+
+const countriesEl = document.querySelector(".countries");
+const filters = document.querySelectorAll(".filter");
 const showFilters = document.querySelector(".filter-current");
-const filters = document.querySelector(".filters");
-
-showFilters.addEventListener("click", function () {
-  filters.classList.toggle("active");
-});
-
-// API
-
-const countiresContainer = document.querySelector(".countries");
-const preloader = document.querySelector(".preloader");
-
-window.addEventListener("load", () => {
-  countiresContainer.classList.remove("hide");
-  preloader.classList.add("hide");
-});
+const filtersEl = document.querySelector(".filters");
+const input = document.querySelector(".search-input");
+const filterSelected = document.querySelector(".filter-selected");
 
 // getCountries
 
-function getCountries() {
-  let loader = `<img class="preloader" src="5.gif" alt="Loading" />`;
-  document.querySelector(".countries").innerHTML = loader;
-  fetch("https://restcountries.eu/rest/v2/all")
-    .then((res) => res.json())
-    .then((data) => {
-      let countriesData = ``;
-      data.forEach(function (country) {
-        countriesData += `<article class="country">
-            <div class="country-img">
-            <img src="${country.flag}" alt="${country.name}">
-            </div>
-            <div class="country-about">
-            <h2 class="country-name">${country.name}</h2>
-            <div class="country-details">
-            <p>Population: <span>${country.population}</span></p>
-            <p>Region: <span>${country.region}</span></p>
-            <p>Capital: <span>${country.capital}</span></p>
-            </div>
-            </div>
-            </article>`;
-        document.querySelector(".countries").innerHTML = countriesData;
-      });
-
-      const input = document.querySelector(".search-input");
-
-      input.addEventListener("input", (e) => {
-        const { value } = e.target;
-
-        const countryName = document.querySelectorAll(".country-name");
-
-        countryName.forEach((name) => {
-          if (name.innerText.toLowerCase().includes(value.toLowerCase())) {
-            name.parentElement.parentElement.classList.remove("hide");
-          } else {
-            name.parentElement.parentElement.classList.add("hide");
-          }
-        });
-      });
-    });
-}
 getCountries();
+
+async function getCountries() {
+  const res = await fetch("https://restcountries.eu/rest/v2/all");
+  const countries = await res.json();
+
+  displayCountries(countries);
+  searchCountries();
+}
+
+// displayCountries
+
+function displayCountries(countries) {
+  countriesEl.innerHTML = "";
+
+  countries.forEach((country) => {
+    countriesEl.innerHTML += `<article class="country">
+    <div class="country-img">
+    <img src="${country.flag}" alt="${country.name}">
+    </div>
+    <div class="country-about">
+    <h2 class="country-name">${country.name}</h2>
+    <div class="country-details">
+    <p>Population: <span>${country.population}</span></p>
+    <p class="country-region">Region: <span>${country.region}</span></p>
+    <p>Capital: <span>${country.capital}</span></p>
+    </div>
+    </div>
+    </article>`;
+  });
+}
+
+// search
+
+function searchCountries() {
+  input.addEventListener("input", (e) => {
+    const { value } = e.target;
+    const countryName = document.querySelectorAll(".country-name");
+    filterSelected.innerHTML = "Filter by Region";
+
+    countryName.forEach((name) => {
+      console.log(name.innerHTML);
+      if (name.innerText.toLowerCase().includes(value.toLowerCase())) {
+        name.parentElement.parentElement.classList.remove("hide");
+      } else {
+        name.parentElement.parentElement.classList.add("hide");
+      }
+    });
+  });
+}
+
+// show and hide filters
+
+showFilters.addEventListener("click", () => {
+  filtersEl.classList.toggle("active");
+});
+
+// filter countries
+
+filters.forEach((filter) => {
+  filter.addEventListener("click", () => {
+    const countryRegion = document.querySelectorAll(".country-region");
+    filterSelected.innerHTML = filter.innerText;
+
+    // remove active class
+    filtersEl.classList.remove("active");
+
+    countryRegion.forEach((region) => {
+      if (region.innerText.includes(filterSelected.innerHTML)) {
+        region.parentElement.parentElement.parentElement.classList.remove(
+          "hide"
+        );
+      } else {
+        region.parentElement.parentElement.parentElement.classList.add("hide");
+      }
+    });
+  });
+});
 
 // Dark Mode
 
 document.querySelector(".dark-mode").addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
-
-// search
