@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  transition: background 0.25s ease;
 }
 
 html {
@@ -249,8 +248,29 @@ body.dark .far.fa-moon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 26px;
-  gap: 20px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.gif-dark,
+.gif-light {
+  height: 125px;
+}
+
+.gif-dark {
+  display: none;
+}
+
+.gif-light {
+  display: block;
+}
+
+body.dark .gif-dark {
+  display: block;
+}
+
+body.dark .gif-light {
+  display: none;
 }
 
 /* hide */

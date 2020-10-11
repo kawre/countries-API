@@ -88,8 +88,36 @@ filters.forEach((filter) => {
   });
 });
 
-// Dark Mode
+// Dark Mode & local storage
 
-document.querySelector(".dark-mode").addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+let darkMode = localStorage.getItem("darkMode");
+
+const darkModeBtn = document.querySelector(".dark-mode");
+
+const enableDarkMode = () => {
+  document.body.classList.add("dark");
+  // update local storage
+  localStorage.setItem("darkMode", "enabled");
+};
+
+const disableDarkMode = () => {
+  document.body.classList.remove("dark");
+  // update local storage
+  localStorage.setItem("darkMode", null);
+};
+
+if (darkMode === "enabled") {
+  enableDarkMode();
+}
+
+darkModeBtn.addEventListener("click", () => {
+  darkMode = localStorage.getItem("darkMode");
+
+  if (darkMode !== "enabled") {
+    enableDarkMode();
+    console.log(darkMode);
+  } else {
+    disableDarkMode();
+    console.log(darkMode);
+  }
 });
