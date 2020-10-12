@@ -295,6 +295,7 @@ body.dark .gif-light {
   z-index: 998;
   padding: 80px 6% 0 6%;
   top: 0;
+  display: none;
 }
 
 .overlay-container {
@@ -337,18 +338,83 @@ body.dark .gif-light {
   transform: scale(1.04);
 }
 
+.overlay-country-name {
+  font-size: 34px;
+  padding-bottom: 25px;
+  color: var(--text);
+}
+
+.overlay-list {
+  list-style: none;
+  columns: 2;
+  column-gap: 50px;
+  padding-bottom: 50px;
+}
+
+.overlay-list li {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 200%;
+}
+
+.overlay-list span {
+  font-weight: 300;
+}
+
+.overlay-img {
+  width: 500px;
+}
+
+.overlay-img img {
+  width: 100%;
+}
+
 .back-btn svg {
   height: 16px;
+}
+
+.overlay-border {
+  display: flex;
+  align-items: center;
+}
+
+.overlay-border p {
+  font-size: 16px;
+  font-weight: 600;
+  padding-right: 15px;
+}
+
+.border-container {
+  display: flex;
+  gap: 10px;
+}
+
+.border-container li {
+  background: var(--elements);
+  color: var(--text);
+  height: 26px;
+  width: 95px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 14px;
+  box-shadow: 0 0 5px rgb(0, 0, 0, 0.2);
 }
 
 path {
   fill: var(--text) !important;
 }
 
-/* hide */
+/* hide & show */
 
 .hide {
   display: none;
+}
+
+.show-overlay {
+  display: flex;
 }
 
 @media (max-width: 1200px) {

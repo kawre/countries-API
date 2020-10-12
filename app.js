@@ -15,8 +15,8 @@ async function getCountries() {
   const res = await fetch("https://restcountries.eu/rest/v2/all");
   const countries = await res.json();
 
-  //displayCountries(countries);
-  //searchCountries();
+  displayCountries(countries);
+  searchCountries();
   showDetails();
 }
 
@@ -126,16 +126,94 @@ darkModeBtn.addEventListener("click", () => {
 
 function showDetails() {
   const countryAll = document.querySelectorAll(".country");
+  const overlayEl = document.querySelector(".overlay");
 
   countryAll.forEach((country) => {
     country.addEventListener("click", (e) => {
       const name = e.currentTarget.children[1].children[0].innerText;
-      singleCountry(name);
+      const overlayContainer = document.querySelector(".overlay-container");
+      overlayContainer.innerHTML = ``;
+
+      overlayEl.classList.add("show-overlay");
+
+      // funciton
+      singleCountry(name, overlayContainer);
     });
   });
-  async function singleCountry(name) {
+  async function singleCountry(name, overlayContainer) {
     const res = await fetch(`https://restcountries.eu/rest/v2/name/${name}`);
     const country = await res.json();
-    console.log(JSON.stringify(country));
+
+    country.forEach((e) => {
+      overlayContainer.innerHTML = `<div class="back">
+    <button class="back-btn">
+    <svg
+    version="1.1"
+    id="Capa_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="0 0 31.494 31.494"
+    style="enable-background: new 0 0 31.494 31.494"
+        xml:space="preserve"
+        >
+        <path
+        style="fill: #1e201d"
+        d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554
+        c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587
+        c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"
+        />
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        </svg>
+        
+        <span class="back-text">Back</span>
+        </button>
+        </div>
+        <div class="overlay-country">
+        <div class="overlay-img">
+        <img src="${e.flag}" alt="" />
+        </div>
+        <div class="overlay-details">
+        <strong class="overlay-country-name">${e.name}</strong>
+        <ul class="overlay-list">
+        <li>Native Name: <span>${e.name}</span></li>
+        <li>Population: <span class="population">${e.population}</span></li>
+        <li>Region: <span>${e.region}</span></li>
+        <li>Sub Region: <span>${e.subregion}</span></li>
+        <li>Capital: <span>${e.capital}</span></li>
+        <li>Top Level Domain: <span>${e.topLevelDomain}</span></li>
+        <li>Currencies: <span>${e.currencies}</span></li>
+        <li>Languages: <span>${e.languages}</span></li>
+        </ul>
+        <div class="overlay-border">
+        <p>Border Countries:</p>
+        <ul class="border-container">
+        <li>Siema</li>
+        <li>Siema</li>
+        <li>Siema</li>
+        </ul>
+        </div>
+        </div>
+        </div>`;
+      console.log(e.currencies);
+      document.querySelector(".back-btn").addEventListener("click", () => {
+        overlayEl.classList.remove("show-overlay");
+      });
+    });
   }
 }
