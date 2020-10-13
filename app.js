@@ -132,7 +132,6 @@ function showDetails() {
     country.addEventListener("click", (e) => {
       const name = e.currentTarget.children[1].children[0].innerText;
       const overlayContainer = document.querySelector(".overlay-container");
-      overlayContainer.innerHTML = ``;
 
       overlayEl.classList.add("show-overlay");
 
@@ -210,9 +209,10 @@ function showDetails() {
         </div>
         </div>
         </div>`;
-      console.log(e.currencies);
+
       document.querySelector(".back-btn").addEventListener("click", () => {
         overlayEl.classList.remove("show-overlay");
+        overlayContainer.innerHTML = "";
       });
     });
   }
